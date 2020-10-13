@@ -1,11 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;900&display=swap");
+
 * {
   box-sizing: border-box;
 }
 
 body {
   background-color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
   margin: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 button {
@@ -105,8 +107,14 @@ ul.songs li {
   width: 500px;
 }
 
+.container.lyrics {
+  width: 700px;
+  margin: 30px auto;
+  max-width: 100%;
+}
+
 .container h2 {
-  font-weight: 300;
+  font-size: 20px;
 }
 
 .container p {
@@ -122,3 +130,62 @@ ul.songs li {
   transform: scale(1.3);
   margin: 15px;
 }
+
+.wrapper {
+  width: 800px;
+  margin: auto;
+}
+
+.preview-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.preview-music {
+  padding: 20px 0;
+}
+
+.preview-album,
+.preview-lyrics {
+  display: flex;
+  flex-direction: column;
+}
+
+.preview-lyrics p {
+  text-align: left;
+}
+
+.preview-lyrics .fas {
+  font-size: 20px;
+  padding: 0;
+  line-height: 1.6;
+  margin: 0 10px 0 0;
+}
+
+.preview-album {
+  font-weight: 300;
+}
+
+.preview-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 400px;
+}
+
+.artist {
+  border-radius: 50%;
+  width: 90px;
+  height: auto;
+  margin: 0 15px 15px 0;
+}
+
+.album {
+  border: 1px solid black;
+}
+
+/* audio::-webkit-media-controls-panel {
+  background-color: black;
+
+} */

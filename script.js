@@ -1,6 +1,7 @@
 const form = document.getElementById("form");
 const search = document.getElementById("search");
 const result = document.getElementById("result");
+const preview = document.getElementById("preview");
 const more = document.getElementById("more");
 
 const apiURL = "https://api.lyrics.ovh";
@@ -25,7 +26,14 @@ function showData(data) {
         `
       <li>
       <span> <strong>  ${song.artist.name} </strong>  - ${song.title} </span>
-      <button class="btn" data-artist="${song.artist.name}" data-songtitle="${song.title}">  Get Lyrics </button>
+      <button class="btn" 
+        data-artist="${song.artist.name}" 
+        data-song-title="${song.title}" 
+        data-album-title="${song.album.title}" 
+        data-album-img="${song.album.cover_medium}" 
+        data-artist-img="${song.artist.picture_medium}"  
+        data-song-audio="${song.preview}">  
+      Lyrics </button>
       </li>
       `
     )
@@ -61,17 +69,65 @@ async function getMoreSongs(url) {
 }
 
 // get lyrics button click
-async function getLyrics(artist, songTitle) {
+async function getLyrics(
+  artist,
+  songTitle,
+  albumTitle,
+  albumImg,
+  artistImg,
+  audio
+) {
   const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+
+  console.log(res, "url....");
   const data = await res.json();
   const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
 
+  result.classList.add("lyrics");
+
   result.innerHTML = `
-  <h2> <strong>  ${artist} </strong>  - ${songTitle} </h2>
-  <span> ${lyrics} </span>
+  <div class="preview-container">
+
+    <div class="song-wrapper">
+
+      <div class="preview-header">
+        <img class="artist" src="${artistImg}" alt="artist">  
+          <div class="copy">
+            <h2> <strong>  '${songTitle}' </strong>  </h2>
+            <p>  <em> ${artist} </em> </p>
+          </div> 
+      </div>
+
+      <div class="preview-music">
+        <audio controls>
+          <source src="${audio}" type="audio/mpeg">
+              Your browser does not support the audio element.
+        </audio>
+      </div>
+     
+      <div class="preview-lyrics" id="preview-lyrics">
+        <span> ${lyrics} </span>
+      </div>
+    </div>
+
+    <div class="preview-album">
+      <img class="album" src="${albumImg}" alt="album">  
+      <p> Album - ${albumTitle}   </p>
+    </div>
+
+  </div>
+
   `;
 
   more.innerHTML = "";
+
+  const temp = document.getElementById("preview-lyrics");
+
+  if (!lyrics) {
+    temp.innerHTML = `
+    <p>    <i class="fas fa-exclamation-circle"> </i> lyrics not available  </p>
+    `;
+  }
 }
 
 // Event listeners
@@ -92,11 +148,15 @@ result.addEventListener("click", (e) => {
 
   if (clickedEl.tagName === "BUTTON") {
     const artist = clickedEl.getAttribute("data-artist");
-    const songTitle = clickedEl.getAttribute("data-songTitle");
+    const songTitle = clickedEl.getAttribute("data-song-title");
+    const albumTitle = clickedEl.getAttribute("data-album-title");
+    const albumImg = clickedEl.getAttribute("data-album-img");
+    const artistImg = clickedEl.getAttribute("data-artist-img");
+    const songAudio = clickedEl.getAttribute("data-song-audio");
     console.log(artist);
     console.log(songTitle);
 
-    getLyrics(artist, songTitle);
+    getLyrics(artist, songTitle, albumTitle, albumImg, artistImg, songAudio);
   }
 });
 
