@@ -83,8 +83,6 @@ async function getLyrics(
   const data = await res.json();
   const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
 
-  result.classList.add("lyrics");
-
   result.innerHTML = `
   <div class="preview-container">
 

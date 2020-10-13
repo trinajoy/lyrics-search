@@ -33,7 +33,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 100px 0;
+  padding: 100px 20px;
   position: relative;
 }
 
@@ -89,28 +89,19 @@ form button {
   padding: 4px 10px;
 }
 
-ul.songs {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul.songs li {
+.wrapper,
+.container {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
+  flex-direction: column;
+  flex-direction: wrap;
+  padding: 0 20px;
+  text-align: center;
+  margin: 30px auto;
 }
 
 .container {
-  margin: 30px auto;
   max-width: 100%;
-  width: 500px;
-}
-
-.container.lyrics {
   width: 700px;
-  margin: 30px auto;
-  max-width: 100%;
 }
 
 .container h2 {
@@ -121,25 +112,36 @@ ul.songs li {
   text-align: center;
 }
 
-.centered {
-  display: flex;
-  justify-content: center;
-}
-
 .centered button {
   transform: scale(1.3);
   margin: 15px;
 }
+ul.songs {
+  list-style-type: none;
+  padding: 0;
+}
 
-.wrapper {
-  width: 800px;
-  margin: auto;
+ul.songs button {
+  margin-left: 30px;
+}
+
+ul.songs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
 .preview-container {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
+  text-align: left;
+}
+
+.song-wrapper {
+  padding-bottom: 25px;
 }
 
 .preview-music {
@@ -183,6 +185,8 @@ ul.songs li {
 
 .album {
   border: 1px solid black;
+  width: 200px;
+  height: auto;
 }
 
 /* audio::-webkit-media-controls-panel {
