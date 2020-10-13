@@ -116,6 +116,7 @@ form button {
   transform: scale(1.3);
   margin: 15px;
 }
+
 ul.songs {
   list-style-type: none;
   padding: 0;
@@ -130,6 +131,11 @@ ul.songs li {
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+}
+
+ul.songs li span {
+  word-break: normal;
+  text-align: left;
 }
 
 .preview-container {
