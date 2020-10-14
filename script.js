@@ -81,7 +81,8 @@ async function getLyrics(
 
   console.log(res, "url....");
   const data = await res.json();
-  const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+  // const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+  const lyrics = data.lyrics.replace(/^\s*\n/gm, "<br>");
 
   result.innerHTML = `
   <div class="preview-container">
