@@ -89,19 +89,19 @@ form button {
   padding: 4px 10px;
 }
 
-.wrapper,
 .container {
   display: flex;
   flex-direction: column;
-  flex-direction: wrap;
-  padding: 0 20px;
+  padding: 10px;
   text-align: center;
-  margin: 30px auto;
+  margin: 0 auto;
+  max-width: 100%;
+  width: 780px;
 }
 
-.container {
-  max-width: 100%;
-  width: 700px;
+.pagination {
+  text-align: center;
+  margin: 20px;
 }
 
 .container h2 {
@@ -115,6 +115,62 @@ form button {
 .centered button {
   transform: scale(1.3);
   margin: 15px;
+}
+
+.preview-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+  margin: 0;
+  padding: 20px;
+}
+
+.song-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  max-width: 100%;
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.preview-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 400px;
+}
+
+.preview-music {
+  padding: 20px 0;
+}
+
+.preview-lyrics {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.preview-lyrics p {
+  text-align: left;
+}
+
+.preview-lyrics .fas {
+  font-size: 20px;
+  padding: 0;
+  line-height: 1.6;
+  margin: 0 10px 0 0;
+}
+
+.preview-album {
+  display: flex;
+  flex-direction: column;
+  word-break: normal;
+  font-weight: 300;
+  margin: 0 auto;
 }
 
 ul.songs {
@@ -138,50 +194,6 @@ ul.songs li span {
   text-align: left;
 }
 
-.preview-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  text-align: left;
-}
-
-.song-wrapper {
-  padding-bottom: 25px;
-}
-
-.preview-music {
-  padding: 20px 0;
-}
-
-.preview-album,
-.preview-lyrics {
-  display: flex;
-  flex-direction: column;
-}
-
-.preview-lyrics p {
-  text-align: left;
-}
-
-.preview-lyrics .fas {
-  font-size: 20px;
-  padding: 0;
-  line-height: 1.6;
-  margin: 0 10px 0 0;
-}
-
-.preview-album {
-  font-weight: 300;
-}
-
-.preview-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  width: 400px;
-}
-
 .artist {
   border-radius: 50%;
   width: 90px;
@@ -199,3 +211,6 @@ ul.songs li span {
   background-color: black;
 
 } */
+
+@media (max-width: 990px) {
+}

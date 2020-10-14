@@ -110,7 +110,7 @@ async function getLyrics(
 
     <div class="preview-album">
       <img class="album" src="${albumImg}" alt="album">  
-      <p> Album - ${albumTitle}   </p>
+      <p> <em> ${albumTitle}  </em>  </p>
     </div>
 
   </div>
