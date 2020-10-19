@@ -6,6 +6,9 @@ const more = document.getElementById("more");
 
 const apiURL = "https://api.lyrics.ovh";
 
+// custom CORS proxy
+const cors = "https://guarded-depths-96448.herokuapp.com";
+
 // Search by song or artist
 async function searchSongs(term) {
   const res = await fetch(`${apiURL}/suggest/${term}`);
@@ -61,9 +64,13 @@ function showData(data) {
 }
 
 // get prev and next songs
-async function getMoreSongs(url) {
-  const res = await fetch(`https://cors-anywhere.herokuapp.com/${url}`);
+async function getMoreSongs(audio) {
+  const res = await fetch(`${cors}/${audio}`);
+
+  console.log("res---", res);
   const data = await res.json();
+
+  console.log("dat ---", data);
 
   showData(data);
 }
@@ -77,11 +84,13 @@ async function getLyrics(
   artistImg,
   audio
 ) {
+  // fetch lyrics api
   const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
-
   console.log(res, "url....");
   const data = await res.json();
-  // const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, "<br>");
+  console.log(data, "data + url....");
+
+  // format lyrics
   const lyrics = data.lyrics.replace(/^\s*\n/gm, "<br>");
 
   result.innerHTML = `
@@ -212,4 +221,20 @@ function showData(data) {
         display 'nothing'
       }
 
-*/
+
+
+////  get Mp3
+async function getMP3(url) {
+  const res = await fetch(`${cors}/${url}`, {
+    headers: {
+      "Content-Type": "audio/mpeg",
+      Accept: "audio/mpeg",
+    },
+  });
+  const data = await res.json();
+
+  console.log(res);
+}
+
+
+****/

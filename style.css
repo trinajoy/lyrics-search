@@ -92,7 +92,7 @@ form button {
 .container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 30px 80px 80px 80px;
   text-align: center;
   margin: 0 auto;
   max-width: 100%;
